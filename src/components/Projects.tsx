@@ -53,8 +53,8 @@ export default function Projects() {
       image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop',
       technologies: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
       category: 'Frontend',
-      githubUrl: '#',
-      liveUrl: '#',
+      githubUrl: 'https://github.com/muhammadrehmatwaleed/MRW-Weather-Forecast/tree/main',
+      liveUrl: 'https://mrw-weather-forecast.vercel.app/',
       featured: false
     },
     {
@@ -102,6 +102,13 @@ export default function Projects() {
     : projects.filter(project => project.category === selectedCategory);
 
   const featuredProjects = projects.filter(project => project.featured);
+
+  // Function to handle opening URLs
+  const handleOpenUrl = (url) => {
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-gray-900">
@@ -157,11 +164,20 @@ export default function Projects() {
                     )}
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" variant="outline" className="flex items-center space-x-1">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex items-center space-x-1"
+                      onClick={() => handleOpenUrl(project.githubUrl)}
+                    >
                       <Github className="h-4 w-4" />
                       <span>Code</span>
                     </Button>
-                    <Button size="sm" className="flex items-center space-x-1">
+                    <Button 
+                      size="sm" 
+                      className="flex items-center space-x-1"
+                      onClick={() => handleOpenUrl(project.liveUrl)}
+                    >
                       <ExternalLink className="h-4 w-4" />
                       <span>Live</span>
                     </Button>
@@ -220,17 +236,27 @@ export default function Projects() {
               <CardContent>
                 <div className="flex flex-wrap gap-1 mb-4">
                   {project.technologies.slice(0, 4).map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech}
+                    variant="secondary" className="text-xs">
                       {tech}
                     </Badge>
                   ))}
                 </div>
                 <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" className="flex items-center space-x-1 flex-1">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="flex items-center space-x-1 flex-1"
+                    onClick={() => handleOpenUrl(project.githubUrl)}
+                  >
                     <Github className="h-3 w-3" />
                     <span>Code</span>
                   </Button>
-                  <Button size="sm" className="flex items-center space-x-1 flex-1">
+                  <Button 
+                    size="sm" 
+                    className="flex items-center space-x-1 flex-1"
+                    onClick={() => handleOpenUrl(project.liveUrl)}
+                  >
                     <ExternalLink className="h-3 w-3" />
                     <span>Live</span>
                   </Button>
