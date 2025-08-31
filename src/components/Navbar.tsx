@@ -43,7 +43,9 @@ export default function Navbar() {
         <img
         src="/mrwaiimage.jpg"
         alt="Logo"
-        className="h-14 w-16"
+        className="h-14 w-14 rounded-full"
+       
+
         />
 
           {/* Desktop Navigation */}
